@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.awesome.cloud.im</groupId>
+    <artifactId>im-cloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>im-tcp-client-sdk</module>
+        <module>test</module>
+        <module>im-tcp-gateway</module>
+        <module>im-dispatcher</module>
+        <module>im-business</module>
+        <module>im-protocol</module>
+        <module>im-common</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+    </parent>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
+        <shopex.version.project.maven>1.0-SNAPSHOT</shopex.version.project.maven>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!--整合spring cloud-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--整合spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>rdc-releases</id>
+            <url>https://repo.rdc.aliyun.com/repository/49617-release-JMwOG4/</url>
+        </repository>
+        <snapshotRepository>
+            <id>rdc-snapshots</id>
+            <url>https://repo.rdc.aliyun.com/repository/49617-snapshot-mkWAqh/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>
