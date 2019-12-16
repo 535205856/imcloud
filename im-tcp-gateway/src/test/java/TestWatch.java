@@ -1,10 +1,10 @@
-import com.awesome.cloud.im.gateway.server.ZookeeperClientCreater;
+import com.awesome.cloud.im.gateway.server.zookeeper.ZookeeperClientCreater;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.PathChildrenCache;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheEvent;
 import org.apache.curator.framework.recipes.cache.PathChildrenCacheListener;
 
-import static com.awesome.cloud.im.gateway.server.ClientServer.ZOOKEEPERSTRING;
+import static com.awesome.cloud.im.gateway.server.netty.ClientServer.ZOOKEEPERSTRING;
 
 /**
  * projectName：imcloud

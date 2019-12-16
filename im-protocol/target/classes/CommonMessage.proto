@@ -1,0 +1,61 @@
+// authoer:liwenqiang
+//emial: awesome.li@aliyun.com
+
+syntax = "proto2";
+
+option java_outer_classname = "ImCommunicationProto";
+option java_package = "com.awesome.im.cloud.proto";
+
+//    //  protoc --java_out src/main/java/ src/main/resources/UserAuthRequestProto.proto
+message CommonMessage {
+
+
+    enum DataTye {
+        RequestType = 0;
+        ReponseType = 1;
+    }
+
+    optional DataTye date_type = 2;
+
+    oneof dateBody {
+        Request request = 3;
+
+        Reponse reponse = 4;
+
+    }
+
+    // 通用返回请求
+    message Request {
+        optional int64 timestamp = 1;
+        //流传输
+        optional bytes stream_body = 2;
+        optional int32 reques_type = 3;
+        //json 传输
+        optional string str_body = 4;
+
+        optional string client_version = 5;
+
+
+    }
+
+    // 通用返回
+    message Reponse {
+        //
+        optional int64 timestamp = 1;
+        //
+        //流传输
+        optional bytes stream_body = 2;
+        optional int32 reponse_type = 3;
+        //json 传输
+        optional string str_body = 4;
+
+        optional int32 code = 5;
+
+
+    }
+
+
+}
+
+
+

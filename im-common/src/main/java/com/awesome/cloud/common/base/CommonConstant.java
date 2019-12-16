@@ -14,28 +14,33 @@ public interface CommonConstant {
     /**
      * 用户认证请求
      */
-    Integer REQUESTTYPEAUTHREQUEST=1;
+    int REQUESTTYPEAUTHREQUEST=1;
     /**
      * 用户认证返回
      */
-    Integer REQUESTTYPEAUTHREPONSE=2;
+    int REQUESTTYPEAUTHREPONSE=2;
 
 
     /**
-     * 发送单聊消息
+     * 发送单聊消息 请求
      */
-    Integer REQUESTTYPESEND_MESSAGE_CHAT21=3;
+    int REQUESTTYPESEND_MESSAGE_CHAT21=3;
+
+    /**
+     * 发送单聊消息 返回
+     */
+    int REPONSE_TYPESEND_MESSAGE_CHAT21=6;
 
     /**
      * 推送消息返回
      */
-    Integer REPONSE_TYPE_MESSAGE_PUSH=4;
+    int REPONSE_TYPE_MESSAGE_PUSH=4;
 
 
     /**
      * 发送群聊消息
      */
-    Integer REQUESTTYPESEND_MESSAGE_GROUP=5;
+    int REQUESTTYPESEND_MESSAGE_GROUP=5;
 
 
 

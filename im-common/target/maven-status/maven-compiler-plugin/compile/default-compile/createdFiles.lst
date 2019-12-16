@@ -1,0 +1,5 @@
+com/awesome/cloud/common/base/CommonRequest.class
+com/awesome/cloud/common/dto/UserAuthResDTO.class
+com/awesome/cloud/common/base/CommonReponse.class
+com/awesome/cloud/common/base/CommonConstant.class
+com/awesome/cloud/common/dto/UserAuthDTO.class

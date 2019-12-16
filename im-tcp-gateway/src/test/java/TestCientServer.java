@@ -1,4 +1,4 @@
-import com.awesome.cloud.im.gateway.server.ClientServer;
+import com.awesome.cloud.im.gateway.server.netty.ClientServer;
 
 /**
  * projectName：imcloud

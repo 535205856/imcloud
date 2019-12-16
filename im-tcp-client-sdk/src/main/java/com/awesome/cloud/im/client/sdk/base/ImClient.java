@@ -4,6 +4,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.json.JSONUtil;
 import com.awesome.cloud.common.base.CommonConstant;
 import com.awesome.cloud.common.base.CommonRequest;
+import com.awesome.cloud.common.dto.SimpleMessageRequest;
 import com.awesome.cloud.common.dto.UserAuthDTO;
 import com.awesome.im.cloud.proto.ImCommunicationProto;
 import io.netty.bootstrap.Bootstrap;
@@ -15,12 +16,8 @@ import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import io.netty.handler.codec.string.StringDecoder;
-import io.netty.handler.codec.string.StringEncoder;
-import io.netty.handler.timeout.IdleStateHandler;
-import lombok.Data;
 
-import java.util.UUID;
+import static com.awesome.cloud.common.base.CommonConstant.REQUESTTYPESEND_MESSAGE_CHAT21;
 
 /**
  * projectName：imcloud
@@ -107,10 +104,25 @@ public class ImClient {
         userAuthDTO.setToken(IdUtil.randomUUID());
         String toJsonStr = JSONUtil.toJsonStr(userAuthDTO);
 
-        ImCommunicationProto.CommonMessage commonMessage = CommonRequest.buildRequest("1.0", toJsonStr.getBytes(), System.currentTimeMillis(), "", CommonConstant.REQUESTTYPEAUTHREQUEST);
+        ImCommunicationProto.CommonMessage commonMessage =
+                CommonRequest.buildRequest("1.0", toJsonStr, System.currentTimeMillis(),
+                        "", CommonConstant.REQUESTTYPEAUTHREQUEST);
         GatewaySessionManger.getInstance().getAvailableChannel().writeAndFlush(commonMessage);
     }
 
+
+    public  void sendSimpleMessage(){
+        SimpleMessageRequest simpleMessageRequest=new SimpleMessageRequest();
+        simpleMessageRequest.setContent("hi hello ");
+        simpleMessageRequest.setReceiveUserId("333333L");
+        simpleMessageRequest.setSendUserId("11122L");
+        simpleMessageRequest.setTimestamp(System.currentTimeMillis());
+        String toJsonStr = JSONUtil.toJsonStr(simpleMessageRequest);
+        ImCommunicationProto.CommonMessage commonMessage =
+                CommonRequest.buildRequest("1.0", toJsonStr, System.currentTimeMillis(),
+                        "", REQUESTTYPESEND_MESSAGE_CHAT21);
+        GatewaySessionManger.getInstance().getAvailableChannel().writeAndFlush(commonMessage);
+    }
 
 
 

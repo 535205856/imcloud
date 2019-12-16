@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * creator：awesome
  */
 public class GatewaySessionManger {
-    private Logger logger= Logger.getLogger(this.getClass().getName());
+    private  Logger logger= Logger.getLogger(this.getClass().getName());
 
     private ConcurrentHashMap<String, Channel> clientSessionManager;
 
