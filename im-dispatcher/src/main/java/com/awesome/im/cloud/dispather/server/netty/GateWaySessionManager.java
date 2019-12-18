@@ -49,6 +49,10 @@ public class GateWaySessionManager {
         logger.info("im-dispatcher remove success session  uid "+uid+"  current size" +gateWaySession.size());
     }
 
+    public  Channel getSession(String uid){
+        return   gateWaySession.get(uid);
+
+    }
 
 
 

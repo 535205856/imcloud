@@ -1,6 +1,7 @@
 package com.awesome.im.cloud.dispather.server.netty;
 
 import cn.hutool.json.JSONUtil;
+import com.awesome.cloud.common.RabbitMQConstant;
 import com.awesome.cloud.common.base.CommonConstant;
 import com.awesome.cloud.common.base.CommonReponse;
 import com.awesome.cloud.common.dto.UserAuthDTO;
@@ -13,7 +14,8 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import java.util.logging.Logger;
 
-import static com.awesome.cloud.common.base.CommonConstant.*;
+import static com.awesome.cloud.common.base.CommonConstant.REQUESTTYPEAUTHREQUEST;
+import static com.awesome.cloud.common.base.CommonConstant.REQUESTTYPESEND_MESSAGE_CHAT21;
 
 /**
  * projectName：imcloud
@@ -75,7 +77,7 @@ public class GateWayHandler extends SimpleChannelInboundHandler<ImCommunicationP
                     logger.info("im-dispatcher   收到单聊消息 -----"+strBody);
 
                 RabbitTemplate rabbitTemplate = SpringContextHolder.getBean(RabbitTemplate.class);
-                rabbitTemplate.convertAndSend("im","simple-message",strBody);
+                rabbitTemplate.convertAndSend(RabbitMQConstant.PROGRAMMATICALLY_EXCHANGE,RabbitMQConstant.IM_SIMPLE_MESSAGE_SEND_KEY,strBody);
                 logger.info("---消息发送成功---"+strBody);
 
                 break;

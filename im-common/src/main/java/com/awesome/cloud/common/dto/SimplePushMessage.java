@@ -1,9 +1,6 @@
 package com.awesome.cloud.common.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 /**
  * projectName：imcloud
@@ -17,9 +14,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SimpleMessageRequest {
-
-
+@ToString
+public class SimplePushMessage {
 
     private  String receiveUserId;
 
@@ -28,5 +24,9 @@ public class SimpleMessageRequest {
     private  String content;
 
     private  Long timestamp;
+
+    private  Long messageId;
+
+    private  String seq;
 
 }

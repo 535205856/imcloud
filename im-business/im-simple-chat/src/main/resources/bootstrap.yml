@@ -14,5 +14,51 @@ spring:
     username: guest
     password: guest
     virtual-host: "/"
+  profiles:
+    active: dev
+  http:
+    encoding:
+      enabled: true
+      charset: utf-8
+      force: true
+  main:
+    allow-bean-definition-overriding: true
+
+  shardingsphere:
+    datasource:
+      names: m1
+      m1:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/im-cloud?useUnicode=true
+        username: root
+        password: awesome
+    sharding:
+      tables:
+        dispatch_message:
+          actualDataNodes: m1.dispatch_message_$->{0..4}
+          tableStrategy:
+            inline:
+              shardingColumn: id
+              algorithmExpression: dispatch_message_$->{id % 4}
+          keyGenerator:
+            type: SNOWFLAKE
+            column: id
+        push_message:
+          actualDataNodes: m1.push_message_$->{0..4}
+          tableStrategy:
+            inline:
+              shardingColumn: id
+              algorithmExpression: push_message_$->{id % 4}
+          keyGenerator:
+            type: SNOWFLAKE
+            column: id
+    props:
+      sql:
+        show: true
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
 server:
   port: 7003

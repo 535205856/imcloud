@@ -14,7 +14,10 @@ public class TestIm {
         ImClient imClient=new ImClient();
         imClient.connect("127.0.0.1",8001);
         imClient.auth();
-        imClient.sendSimpleMessage();
+//        for (int i = 0; i < 10000; i++) {
+            imClient.sendSimpleMessage();
+
+//        }
 
 
 

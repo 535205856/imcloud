@@ -42,6 +42,14 @@ public class DispatcherHandler extends SimpleChannelInboundHandler<ImCommunicati
                     logger.info("返回sdk success ---");
                 }
 
+                if (CommonConstant.REPONSE_TYPESEND_MESSAGE_CHAT21==reponse.getReponseType()){
+                    String reponseStrBody = reponse.getStrBody();
+                    UserAuthResDTO userAuthDTO = JSONUtil.toBean(reponseStrBody, UserAuthResDTO.class);
+                    Channel clientSession = ClientSdkSessionManager.getIntance().getSession(userAuthDTO.getUid());
+                    clientSession.writeAndFlush(commonMessage);
+                    logger.info("单聊消息的返回到client success ---");
+                }
+
 
                 break;
             case RequestType:

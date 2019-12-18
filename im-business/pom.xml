@@ -17,5 +17,12 @@
         <module>im-history-message</module>
     </modules>
 
+    <properties>
+        <sharding.jdbc.version>3.0.0</sharding.jdbc.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
 
 </project>
